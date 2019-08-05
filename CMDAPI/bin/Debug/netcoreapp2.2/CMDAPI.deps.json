@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    "signature": "6699833176bd2b90b3b83060c5d99df8e0f04b0a"
   },
   "compilationOptions": {
     "defines": [
@@ -26,6 +26,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
+          "Microsoft.EntityFrameworkCore.Tools": "1.0.0",
           "Microsoft.NETCore.App": "2.2.0"
         },
         "runtime": {
@@ -33,6 +34,11 @@
         },
         "compile": {
           "CMDAPI.dll": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Tools/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Design": "2.2.0"
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -189,7 +195,7 @@
           "Microsoft.EntityFrameworkCore.InMemory": "2.2.0",
           "Microsoft.EntityFrameworkCore.Relational": "2.2.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.0",
-          "Microsoft.EntityFrameworkCore.Tools": "2.2.0",
+          "Microsoft.EntityFrameworkCore.Tools": "1.0.0",
           "Microsoft.Extensions.Caching.Abstractions": "2.2.0",
           "Microsoft.Extensions.Caching.Memory": "2.2.0",
           "Microsoft.Extensions.Caching.SqlServer": "2.2.0",
@@ -1433,12 +1439,6 @@
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
-        },
-        "compileOnly": true
-      },
-      "Microsoft.EntityFrameworkCore.Tools/2.2.0": {
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "2.2.0"
         },
         "compileOnly": true
       },
@@ -3237,6 +3237,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Microsoft.EntityFrameworkCore.Tools/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5nzzxebDVQ9ZnUYOu+Qh8fQ+GxgvGXt+cmlqa8x4rcKXamD14z6lPBYev149lAOF8ESNLQXV6bKW1VmnDRFQ2Q==",
+      "path": "microsoft.entityframeworkcore.tools/1.0.0",
+      "hashPath": "microsoft.entityframeworkcore.tools.1.0.0.nupkg.sha512"
+    },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "type": "package",
       "serviceable": true,
@@ -3999,13 +4006,6 @@
       "sha512": "sha512-rCGBF6Hab9633Dh2xtiAcJnDxf2CjaBrGyoagoCoYHH5Ftbdw5zX/e9ABgif5ngzh7DsrBcgxK/3gHBZ2n+TGA==",
       "path": "microsoft.entityframeworkcore.sqlserver/2.2.0",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.2.2.0.nupkg.sha512"
-    },
-    "Microsoft.EntityFrameworkCore.Tools/2.2.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-F253CmzpL7eXFKpK++/GIVbyVMZyXYq388osdkggsA1eL7c8ZGwHho0jE3LGA+L6WuXm6KbwQMtnt15zZAqzzA==",
-      "path": "microsoft.entityframeworkcore.tools/2.2.0",
-      "hashPath": "microsoft.entityframeworkcore.tools.2.2.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/2.2.0": {
       "type": "package",

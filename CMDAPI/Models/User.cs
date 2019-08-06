@@ -1,3 +1,4 @@
+
 namespace CMDAPI.Models
 {
     public class User
@@ -7,6 +8,6 @@ namespace CMDAPI.Models
         public string username{get;set;}
         public string email {get;set;}
         public string password {get;set;}
-        public DateTime created_at{get;set;}
+        public System.DateTime created_at{get;set;}
     }
 }

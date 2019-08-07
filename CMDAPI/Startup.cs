@@ -30,6 +30,18 @@ namespace CMDAPI
         {
             services.AddDbContext<CommandContext> (opt => opt.UseSqlServer(Configuration["Data:CommandAPIConnection:ConnectionString"]));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            // This Line Added Swagger Ui Informations
+            services.AddSwaggerGen(c=>{
+                c.SwaggerDoc("v1",new Microsoft.OpenApi.Models.OpenApiInfo{
+                    Title="V & Y Company Hotel Api",
+                    Description="This is Hotel Api, For Hotel Managment Software.",
+                    Version="v0.1",
+                    Contact=new Microsoft.OpenApi.Models.OpenApiContact{
+                        Email="v2018y@gmail.com",
+                        Name="V & Y Soft. Tech. Pvt. Ltd."
+                    }
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +59,11 @@ namespace CMDAPI
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            // This Line Enable The Swagger UI For The Our Api
+            app.UseSwagger();
+            app.UseSwaggerUI(c=>{
+                c.SwaggerEndpoint("/swagger/v1/swagger.json","V & Y Company Hotel Api");
+            });
         }
     }
 }

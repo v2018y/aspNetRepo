@@ -61,7 +61,6 @@ namespace CMDAPI.Controllers
             }
             _context.User.Remove(userItem);
             _context.SaveChanges();
-
             return userItem;
         }
 

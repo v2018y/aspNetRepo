@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CMDAPI.Migrations
 {
     [DbContext(typeof(CommandContext))]
-    [Migration("20190806044122_AddCommandtoDB")]
+    [Migration("20190807043735_AddCommandtoDB")]
     partial class AddCommandtoDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,7 +39,7 @@ namespace CMDAPI.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("CommandItems");
+                    b.ToTable("User");
                 });
 #pragma warning restore 612, 618
         }

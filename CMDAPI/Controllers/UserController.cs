@@ -17,10 +17,33 @@ namespace CMDAPI.Controllers
             _context=context;
         }
 
-        //  api/user
+        //GET:  api/user
         [HttpGet]
         public ActionResult<IEnumerable<User>> GetUser(){
-            return _context.CommandItems;
+            return _context.User;
+        }
+
+        //GET : api/user/n
+        [HttpGet("{id}")]
+        public ActionResult<User> GetUserItem(int id){
+            var userItem= _context.User.Find(id);
+            if(userItem == null){
+                return NotFound();
+            }
+            return userItem;
+        }
+
+        //POST : api/user
+        [HttpPost]
+        public ActionResult<User> PostUserItem(User user){
+            _context.User.Add(user);
+           int i= _context.SaveChanges();
+            if(i>0){
+                return user;
+            }else{
+                return NotFound();
+            }
+
         }
     }
 }

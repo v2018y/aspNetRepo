@@ -9,6 +9,6 @@ namespace CMDAPI.Models
 
         }
 
-        public DbSet<User> CommandItems {get; set;}
+        public DbSet<User> User {get; set;}
     }
 }

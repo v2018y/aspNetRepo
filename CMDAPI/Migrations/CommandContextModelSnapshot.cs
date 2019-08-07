@@ -37,7 +37,7 @@ namespace CMDAPI.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("CommandItems");
+                    b.ToTable("User");
                 });
 #pragma warning restore 612, 618
         }

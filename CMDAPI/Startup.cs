@@ -59,6 +59,12 @@ namespace CMDAPI
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            // This Loaded Static Page Project Start
+            DefaultFilesOptions options = new DefaultFilesOptions();
+            options.DefaultFileNames.Clear();
+            options.DefaultFileNames.Add("index.html");
+            app.UseDefaultFiles(options);
+            app.UseStaticFiles();
             // This Line Enable The Swagger UI For The Our Api
             app.UseSwagger();
             app.UseSwaggerUI(c=>{

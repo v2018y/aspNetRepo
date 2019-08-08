@@ -4,14 +4,16 @@ using CMDAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CMDAPI.Migrations
 {
     [DbContext(typeof(CommandContext))]
-    partial class CommandContextModelSnapshot : ModelSnapshot
+    [Migration("20190808050143_Added Foregin key from FoodItem to FoodeQty table")]
+    partial class AddedForeginkeyfromFoodItemtoFoodeQtytable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,8 +78,6 @@ namespace CMDAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("fqId");
-
                     b.Property<string>("gst");
 
                     b.Property<double>("invSubTotal");
@@ -87,8 +87,6 @@ namespace CMDAPI.Migrations
                     b.Property<int>("tabId");
 
                     b.HasKey("invId");
-
-                    b.HasIndex("fqId");
 
                     b.HasIndex("tabId");
 
@@ -126,11 +124,6 @@ namespace CMDAPI.Migrations
 
             modelBuilder.Entity("CMDAPI.Models.Invoice", b =>
                 {
-                    b.HasOne("CMDAPI.Models.FoodQty", "FoodQty")
-                        .WithMany()
-                        .HasForeignKey("fqId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("CMDAPI.Models.HTable", "HTable")
                         .WithMany()
                         .HasForeignKey("tabId")

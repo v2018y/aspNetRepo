@@ -4,14 +4,16 @@ using CMDAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CMDAPI.Migrations
 {
     [DbContext(typeof(CommandContext))]
-    partial class CommandContextModelSnapshot : ModelSnapshot
+    [Migration("20190808045411_Added FoId primery key in Other table")]
+    partial class AddedFoIdprimerykeyinOthertable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,8 +42,6 @@ namespace CMDAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("foId");
-
                     b.Property<string>("foodName");
 
                     b.Property<int>("foodQty");
@@ -49,8 +49,6 @@ namespace CMDAPI.Migrations
                     b.Property<double>("foodTotal");
 
                     b.HasKey("fqId");
-
-                    b.HasIndex("foId");
 
                     b.ToTable("FoodQty");
                 });
@@ -76,8 +74,6 @@ namespace CMDAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("fqId");
-
                     b.Property<string>("gst");
 
                     b.Property<double>("invSubTotal");
@@ -87,10 +83,6 @@ namespace CMDAPI.Migrations
                     b.Property<int>("tabId");
 
                     b.HasKey("invId");
-
-                    b.HasIndex("fqId");
-
-                    b.HasIndex("tabId");
 
                     b.ToTable("Invoice");
                 });
@@ -114,27 +106,6 @@ namespace CMDAPI.Migrations
                     b.HasKey("id");
 
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("CMDAPI.Models.FoodQty", b =>
-                {
-                    b.HasOne("CMDAPI.Models.FoodItem", "FoodItem")
-                        .WithMany()
-                        .HasForeignKey("foId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CMDAPI.Models.Invoice", b =>
-                {
-                    b.HasOne("CMDAPI.Models.FoodQty", "FoodQty")
-                        .WithMany()
-                        .HasForeignKey("fqId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("CMDAPI.Models.HTable", "HTable")
-                        .WithMany()
-                        .HasForeignKey("tabId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

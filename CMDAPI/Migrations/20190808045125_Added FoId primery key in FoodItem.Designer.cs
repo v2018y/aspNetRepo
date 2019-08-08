@@ -4,14 +4,16 @@ using CMDAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CMDAPI.Migrations
 {
     [DbContext(typeof(CommandContext))]
-    partial class CommandContextModelSnapshot : ModelSnapshot
+    [Migration("20190808045125_Added FoId primery key in FoodItem")]
+    partial class AddedFoIdprimerykeyinFoodItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,11 +38,9 @@ namespace CMDAPI.Migrations
 
             modelBuilder.Entity("CMDAPI.Models.FoodQty", b =>
                 {
-                    b.Property<int>("fqId")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("foId");
 
                     b.Property<string>("foodName");
 
@@ -48,16 +48,14 @@ namespace CMDAPI.Migrations
 
                     b.Property<double>("foodTotal");
 
-                    b.HasKey("fqId");
-
-                    b.HasIndex("foId");
+                    b.HasKey("id");
 
                     b.ToTable("FoodQty");
                 });
 
             modelBuilder.Entity("CMDAPI.Models.HTable", b =>
                 {
-                    b.Property<int>("tabId")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -65,18 +63,16 @@ namespace CMDAPI.Migrations
 
                     b.Property<string>("tabName");
 
-                    b.HasKey("tabId");
+                    b.HasKey("id");
 
                     b.ToTable("HTable");
                 });
 
             modelBuilder.Entity("CMDAPI.Models.Invoice", b =>
                 {
-                    b.Property<int>("invId")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("fqId");
 
                     b.Property<string>("gst");
 
@@ -86,11 +82,7 @@ namespace CMDAPI.Migrations
 
                     b.Property<int>("tabId");
 
-                    b.HasKey("invId");
-
-                    b.HasIndex("fqId");
-
-                    b.HasIndex("tabId");
+                    b.HasKey("id");
 
                     b.ToTable("Invoice");
                 });
@@ -114,27 +106,6 @@ namespace CMDAPI.Migrations
                     b.HasKey("id");
 
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("CMDAPI.Models.FoodQty", b =>
-                {
-                    b.HasOne("CMDAPI.Models.FoodItem", "FoodItem")
-                        .WithMany()
-                        .HasForeignKey("foId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CMDAPI.Models.Invoice", b =>
-                {
-                    b.HasOne("CMDAPI.Models.FoodQty", "FoodQty")
-                        .WithMany()
-                        .HasForeignKey("fqId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("CMDAPI.Models.HTable", "HTable")
-                        .WithMany()
-                        .HasForeignKey("tabId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

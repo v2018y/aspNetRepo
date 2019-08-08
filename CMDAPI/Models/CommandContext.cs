@@ -10,5 +10,10 @@ namespace CMDAPI.Models
         }
 
         public DbSet<User> User {get; set;}
+        public DbSet<FoodItem> FoodItem {get; set;}
+        public DbSet<FoodQty> FoodQty {get; set;}
+        public DbSet<HTable> HTable {get; set;}
+        public DbSet<Invoice> Invoice {get; set;}
+
     }
 }

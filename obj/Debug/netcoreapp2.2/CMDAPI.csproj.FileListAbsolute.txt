@@ -1,0 +1,14 @@
+C:\@windows\Vishva\dotnet\CMDAPI\bin\Debug\netcoreapp2.2\CMDAPI.deps.json
+C:\@windows\Vishva\dotnet\CMDAPI\bin\Debug\netcoreapp2.2\CMDAPI.runtimeconfig.json
+C:\@windows\Vishva\dotnet\CMDAPI\bin\Debug\netcoreapp2.2\CMDAPI.runtimeconfig.dev.json
+C:\@windows\Vishva\dotnet\CMDAPI\bin\Debug\netcoreapp2.2\CMDAPI.dll
+C:\@windows\Vishva\dotnet\CMDAPI\bin\Debug\netcoreapp2.2\CMDAPI.pdb
+C:\@windows\Vishva\dotnet\CMDAPI\obj\Debug\netcoreapp2.2\CMDAPI.csprojAssemblyReference.cache
+C:\@windows\Vishva\dotnet\CMDAPI\obj\Debug\netcoreapp2.2\CMDAPI.csproj.CoreCompileInputs.cache
+C:\@windows\Vishva\dotnet\CMDAPI\obj\Debug\netcoreapp2.2\CMDAPI.RazorAssemblyInfo.cache
+C:\@windows\Vishva\dotnet\CMDAPI\obj\Debug\netcoreapp2.2\CMDAPI.RazorAssemblyInfo.cs
+C:\@windows\Vishva\dotnet\CMDAPI\obj\Debug\netcoreapp2.2\CMDAPI.AssemblyInfoInputs.cache
+C:\@windows\Vishva\dotnet\CMDAPI\obj\Debug\netcoreapp2.2\CMDAPI.AssemblyInfo.cs
+C:\@windows\Vishva\dotnet\CMDAPI\obj\Debug\netcoreapp2.2\CMDAPI.RazorTargetAssemblyInfo.cache
+C:\@windows\Vishva\dotnet\CMDAPI\obj\Debug\netcoreapp2.2\CMDAPI.dll
+C:\@windows\Vishva\dotnet\CMDAPI\obj\Debug\netcoreapp2.2\CMDAPI.pdb

@@ -12,12 +12,13 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using CMDAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using Steeltoe.Discovery.Client;
 
 namespace CMDAPI
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; set;}
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,6 +29,10 @@ namespace CMDAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+              // This line Added This Services to Eureka Server
+            services.AddLogging();
+            services.AddDiscoveryClient(Configuration);
+            // This Line Enable Database Connections
             services.AddDbContext<CommandContext> (opt => opt.UseSqlServer(Configuration["Data:CommandAPIConnection:ConnectionString"]));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             // This Line Added Swagger Ui Informations
@@ -42,10 +47,11 @@ namespace CMDAPI
                     }
                     });
             });
+          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -70,6 +76,10 @@ namespace CMDAPI
             app.UseSwaggerUI(c=>{
                 c.SwaggerEndpoint("/swagger/v1/swagger.json","V & Y Company Hotel Api");
             });
+
+            // This Line Code Enable Discovery Client 
+             app.UseDiscoveryClient();
+
         }
     }
 }

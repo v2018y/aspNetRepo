@@ -74,6 +74,10 @@
               "version": "[2.2.0, )",
               "autoReferenced": true
             },
+            "Steeltoe.Discovery.ClientCore": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.0.0-rc2, )"

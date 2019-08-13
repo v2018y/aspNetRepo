@@ -7,6 +7,7 @@ namespace CMDAPI.Models{
         public double invSubTotal {get;set;}
         public double invTotal {get;set;}
         public string gst {get;set;}
+        public int userId {get;set;}
 
         public int tabId {get;set;}
         public virtual HTable HTable {get;set;}

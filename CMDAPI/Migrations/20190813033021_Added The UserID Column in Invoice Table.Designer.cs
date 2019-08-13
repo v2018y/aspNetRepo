@@ -4,14 +4,16 @@ using CMDAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CMDAPI.Migrations
 {
     [DbContext(typeof(CommandContext))]
-    partial class CommandContextModelSnapshot : ModelSnapshot
+    [Migration("20190813033021_Added The UserID Column in Invoice Table")]
+    partial class AddedTheUserIDColumninInvoiceTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

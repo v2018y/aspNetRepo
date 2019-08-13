@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CMDAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace CMDAPI.Controllers
 {
@@ -27,6 +29,8 @@ namespace CMDAPI.Controllers
         //GET : api/invoice/n
         [HttpGet("{id}")]
         public ActionResult<Invoice> GetInvoiceItem(int id){
+             var cookie =Request.Cookies.FirstOrDefault();
+             Console.Write(cookie);
             var invoiceItem= _context.Invoice.Find(id);
             if(invoiceItem == null){
                 return NotFound();
@@ -37,6 +41,8 @@ namespace CMDAPI.Controllers
         //POST : api/invoice
         [HttpPost]
         public ActionResult<Invoice> PostInvoiceItem(Invoice invoice){
+            var cookie =Request.Cookies.FirstOrDefault();
+             Console.Write(cookie);
             _context.Invoice.Add(invoice);
             _context.SaveChanges();
            return CreatedAtAction("GetInvoiceItem",new Invoice{invId=invoice.invId},invoice);

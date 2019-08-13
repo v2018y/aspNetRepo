@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CMDAPI.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Net.Http;
-using System.Net.Http.Headers;
+using System.Web;
+
 
 namespace CMDAPI.Controllers
 {
@@ -23,14 +22,16 @@ namespace CMDAPI.Controllers
         //GET:  api/invoice
         [HttpGet]
         public ActionResult<IEnumerable<Invoice>> GetInvoice(){
+            var user=Request.Headers["userId"];
+            Console.WriteLine("UserId = " +user);
             return _context.Invoice;
         }
 
         //GET : api/invoice/n
         [HttpGet("{id}")]
         public ActionResult<Invoice> GetInvoiceItem(int id){
-             var cookie =Request.Cookies.FirstOrDefault();
-             Console.Write(cookie);
+            var user=Request.Headers["userId"];
+            Console.WriteLine("UserId = " +user);
             var invoiceItem= _context.Invoice.Find(id);
             if(invoiceItem == null){
                 return NotFound();

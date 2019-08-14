@@ -42,8 +42,6 @@ namespace CMDAPI.Controllers
         //POST : api/invoice
         [HttpPost]
         public ActionResult<Invoice> PostInvoiceItem(Invoice invoice){
-            var cookie =Request.Cookies.FirstOrDefault();
-             Console.Write(cookie);
             _context.Invoice.Add(invoice);
             _context.SaveChanges();
            return CreatedAtAction("GetInvoiceItem",new Invoice{invId=invoice.invId},invoice);

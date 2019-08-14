@@ -15,42 +15,47 @@ namespace CMDAPI.Controllers
         private readonly CommandContext _context;
         
         public HTableController(CommandContext context){
-            _context=context;
+           _context=context;
         }
 
         //GET:  api/htable
         [HttpGet]
-        public ActionResult<IEnumerable<HTable>> GetHTable(){
-            return _context.HTable;
+        public IQueryable<HTable> GetHTable(){
+            var user=Request.Headers["userId"];
+            Console.WriteLine("User Id "+user);
+            Console.WriteLine(" Res = "+_context.HTable.Where(s => s.userId == user));
+            return _context.HTable.Where(s => s.userId == Convert.ToInt32(user));
         }
 
         //GET : api/htable/n
         [HttpGet("{id}")]
-        public ActionResult<HTable> GetHTableItem(int id){
-            var hTabelItem= _context.HTable.Find(id);
+        public IQueryable<HTable> GetHTableItem(int id){
+            var hTabelItem= _context.HTable.Where(s => s.tabId == id);
             if(hTabelItem == null){
-                return NotFound();
+                return null;
             }
-            return hTabelItem;
+            return hTabelItem ;
         }
 
         //POST : api/htable
         [HttpPost]
-        public ActionResult<HTable> PostHTableItem(HTable hTabel){
+        public IQueryable<HTable> PostHTableItem(HTable hTabel){
+            var user=Request.Headers["userId"];
+            hTabel.userId=Convert.ToInt32(user);
             _context.HTable.Add(hTabel);
             _context.SaveChanges();
-           return CreatedAtAction("GetHTableItem",new HTable{tabId=hTabel.tabId},hTabel);
+           return GetHTableItem(hTabel.tabId); 
        }
 
         //PUT : api/htable/n
         [HttpPut("{id}")]
-        public ActionResult PutHTableItem(int id,HTable hTabel){
+        public IQueryable PutHTableItem(int id,HTable hTabel){
             if(id !=hTabel.tabId){
-                return BadRequest();
+                return null;
             }
             _context.Entry(hTabel).State= EntityState.Modified;
             _context.SaveChanges();
-            return CreatedAtAction("GetHTableItem",new HTable{tabId=hTabel.tabId},hTabel);
+            return GetHTableItem(hTabel.tabId);
         }
         //DELETE : api/htable/n
         [HttpDelete("{id}")]

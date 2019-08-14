@@ -6,5 +6,6 @@ namespace CMDAPI.Models{
         public int tabId {get;set;}
         public string tabName {get;set;}
         public string tabLocations {get;set;}
+        public int userId {get;set;}
     }
 }

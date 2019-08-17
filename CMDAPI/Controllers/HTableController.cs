@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CMDAPI.Models;
 using Microsoft.EntityFrameworkCore;
@@ -20,26 +18,26 @@ namespace CMDAPI.Controllers
 
         //GET:  api/htable
         [HttpGet]
-        public IQueryable<HTable> GetHTable(){
+        public IActionResult GetHTable(){
             var user=Request.Headers["userId"];
             Console.WriteLine("User Id "+user);
             Console.WriteLine(" Res = "+_context.HTable.Where(s => s.userId == user));
-            return _context.HTable.Where(s => s.userId == Convert.ToInt32(user));
+            return Ok (_context.HTable.Where(s => s.userId == Convert.ToInt32(user)));
         }
 
         //GET : api/htable/n
         [HttpGet("{id}")]
-        public IQueryable<HTable> GetHTableItem(int id){
+        public IActionResult GetHTableItem(int id){
             var hTabelItem= _context.HTable.Where(s => s.tabId == id);
             if(hTabelItem == null){
-                return null;
+                return NotFound();
             }
-            return hTabelItem ;
+            return Ok(hTabelItem);
         }
 
         //POST : api/htable
         [HttpPost]
-        public IQueryable<HTable> PostHTableItem(HTable hTabel){
+        public IActionResult PostHTableItem(HTable hTabel){
             var user=Request.Headers["userId"];
             hTabel.userId=Convert.ToInt32(user);
             _context.HTable.Add(hTabel);
@@ -49,9 +47,9 @@ namespace CMDAPI.Controllers
 
         //PUT : api/htable/n
         [HttpPut("{id}")]
-        public IQueryable PutHTableItem(int id,HTable hTabel){
+        public IActionResult PutHTableItem(int id,HTable hTabel){
             if(id !=hTabel.tabId){
-                return null;
+                return NotFound() ;
             }
             _context.Entry(hTabel).State= EntityState.Modified;
             _context.SaveChanges();

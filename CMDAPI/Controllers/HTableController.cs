@@ -49,7 +49,7 @@ namespace CMDAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult PutHTableItem(int id,HTable hTabel){
             if(id !=hTabel.tabId){
-                return NotFound() ;
+                return BadRequest() ;
             }
             _context.Entry(hTabel).State= EntityState.Modified;
             _context.SaveChanges();

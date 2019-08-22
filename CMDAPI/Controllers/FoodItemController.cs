@@ -22,8 +22,8 @@ namespace CMDAPI.Controllers
         public IActionResult GetFoodIetm(){
             var user=Request.Headers["userId"];
             Console.WriteLine("User Id "+user);
-            Console.WriteLine(" Res = "+_context.FoodItem.Where(s => s.userId == user));
-            return Ok(_context.FoodItem.Where(s => s.userId == user));
+            Console.WriteLine(" Res = "+_context.FoodItem.Where(s => s.userId ==  Convert.ToInt32(user)));
+            return Ok(_context.FoodItem.Where(s => s.userId == Convert.ToInt32(user)));
         }
 
         //GET : api/foodietm/n

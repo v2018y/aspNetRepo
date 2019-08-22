@@ -23,7 +23,7 @@ namespace CMDAPI.Controllers
         [HttpGet]
         public IActionResult GetInvoice(){
             var user=Request.Headers["userId"];
-            return Ok(_context.Invoice.Where(s => s.userId == user));
+            return Ok(_context.Invoice.Where(s => s.userId == Convert.ToInt32(user)));
         }
 
         //GET : api/invoice/n

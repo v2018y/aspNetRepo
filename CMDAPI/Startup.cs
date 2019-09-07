@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using CMDAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Steeltoe.Discovery.Client;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace CMDAPI
 {
@@ -29,7 +30,8 @@ namespace CMDAPI
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             // This Line Added Swagger Ui Informations
             services.AddSwaggerGen(c=>{
-                c.SwaggerDoc("v1",new Microsoft.OpenApi.Models.OpenApiInfo{
+                c.SwaggerDoc("v1",
+                new Microsoft.OpenApi.Models.OpenApiInfo{
                     Title="V & Y Company Hotel Api",
                     Description="This is Hotel Api, For Hotel Managment Software.",
                     Version="v0.1",
@@ -37,7 +39,8 @@ namespace CMDAPI
                         Email="v2018y@gmail.com",
                         Name="V & Y Soft. Tech. Pvt. Ltd."
                     }
-                    });
+                    }
+                );
             });
           
         }
@@ -64,9 +67,11 @@ namespace CMDAPI
             app.UseDefaultFiles(options);
             app.UseStaticFiles();
             // This Line Enable The Swagger UI For The Our Api
-            app.UseSwagger();
+            app.UseSwagger(c=>{
+                c.RouteTemplate = "api-docs/{documentName}/swagger.json";
+            });
             app.UseSwaggerUI(c=>{
-                c.SwaggerEndpoint("/swagger/v1/swagger.json","V & Y Company Hotel Api");
+                c.SwaggerEndpoint("/api-docs/v1/swagger.json","V & Y Company Hotel Api");
             });
 
             // This Line Code Enable Discovery Client 

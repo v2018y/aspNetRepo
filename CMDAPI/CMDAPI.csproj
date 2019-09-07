@@ -17,6 +17,7 @@
     </PackageReference>
     <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="2.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc2" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.0.0-rc2" />
   </ItemGroup>
 
 </Project>

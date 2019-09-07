@@ -20,6 +20,6 @@ namespace CMDAPI
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
-                // .UseUrls("http://10.10.10.178:5001/");
+                // .UseUrls("http://10.10.10.183:5001/");
     }
 }

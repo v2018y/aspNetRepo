@@ -30,7 +30,8 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.6",
           "Microsoft.NETCore.App": "2.2.0",
           "Steeltoe.Discovery.ClientCore": "2.1.1",
-          "Swashbuckle.AspNetCore": "5.0.0-rc2"
+          "Swashbuckle.AspNetCore": "5.0.0-rc2",
+          "Swashbuckle.AspNetCore.Swagger": "5.0.0-rc2"
         },
         "runtime": {
           "CMDAPI.dll": {}

@@ -51,7 +51,9 @@ namespace CMDAPI.Controllers
             if(id !=hTabel.tabId){
                 return BadRequest() ;
             }
+            var user=Request.Headers["userId"];
             _context.Entry(hTabel).State= EntityState.Modified;
+             hTabel.userId=Convert.ToInt32(user);
             _context.SaveChanges();
             return GetHTableItem(hTabel.tabId);
         }

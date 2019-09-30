@@ -52,7 +52,9 @@ namespace CMDAPI.Controllers
             if(id !=invoice.invId){
                 return BadRequest();
             }
+            var user=Request.Headers["userId"];
             _context.Entry(invoice).State= EntityState.Modified;
+            invoice.userId=Convert.ToInt32(user);
             _context.SaveChanges();
             return GetInvoiceItem(invoice.invId);
         }

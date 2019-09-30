@@ -22,17 +22,18 @@ namespace CMDAPI.Controllers
         public IActionResult GetFoodIetm(){
             var user=Request.Headers["userId"];
             Console.WriteLine("User Id "+user);
-            Console.WriteLine(" Res = "+_context.FoodItem.Where(s => s.userId ==  Convert.ToInt32(user)));
             return Ok(_context.FoodItem.Where(s => s.userId == Convert.ToInt32(user)));
         }
 
         //GET : api/foodietm/n
         [HttpGet("{id}")]
-        public IActionResult GetFoodIetm(int id){
+        public IActionResult GetFoodIetmById(int id){
+            
             var foodItem= _context.FoodItem.Where(s => s.foId == id);
             if(foodItem == null){
                 return NotFound();
             }
+             Console.WriteLine("By Id Res = "+ foodItem);
             return Ok(foodItem);
         }
 
@@ -43,7 +44,7 @@ namespace CMDAPI.Controllers
            foodItem.userId=Convert.ToInt32(user);
            _context.FoodItem.Add(foodItem);
            _context.SaveChanges();
-           return GetFoodIetm(foodItem.foId);
+           return GetFoodIetmById(foodItem.foId);
        }
 
         //PUT : api/foodietm/n
@@ -52,9 +53,11 @@ namespace CMDAPI.Controllers
             if(id !=foodItem.foId){
                 return BadRequest();
             }
+             var user=Request.Headers["userId"];
             _context.Entry(foodItem).State= EntityState.Modified;
+            foodItem.userId=Convert.ToInt32(user);
             _context.SaveChanges();
-            return GetFoodIetm(foodItem.foId);
+            return GetFoodIetmById(foodItem.foId);
         }
 
         //DELETE : api/foodietm/n
